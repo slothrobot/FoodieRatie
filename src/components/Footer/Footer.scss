@@ -1,0 +1,20 @@
+@import "../../common/colors.scss";
+
+.footer{
+    height: 72px;
+    background: $secondary-color;
+    color: $font-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.footer a{
+    color: $font-primary;
+}
+
+.footer div{
+    padding: 5px;
+}

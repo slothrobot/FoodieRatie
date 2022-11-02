@@ -1,0 +1,24 @@
+@import "../src/common/colors.scss";
+
+//add an universal style
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+// so that there will be no __ under my anchors
+a{
+    text-decoration: none;
+    color: $font-primary;
+}
+
+body{
+    color: azure;
+    background-color: $primary-color;
+}
+
+.container{
+    margin: 0px 40px;
+}
