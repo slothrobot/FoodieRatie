@@ -1,19 +1,24 @@
 @import "../../common/colors.scss";
 
+
+
 .header{
-    height: 72px;
-    background-color: $secondary-color;
+    height: 90px;
+    background-color: $primary-color;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
 }
 
 .logo{
-    padding-top: 10px;
     color: $font-primary;
     font-size: 40px;
     font-weight: 600;
+    height: 90px;
 }
 
 .user-image, .user-image img{
@@ -22,25 +27,62 @@
 }
 
 .search-bar{
-    width: 50%;
+    width: 30%;
     display:flex;
     justify-content: center;
     form{
-        width: 70%;
+        width: 80%;
         display: flex;
         justify-content: center;
+        border-radius: 50px;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        &.focus {
+            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+          }
         button{
             padding: 0px 8px;
             font-size: 20px;
             cursor: pointer;
             height: 38px;
+            border: none!important;
+            outline: none;
         }
     }
     input{
-        font-size: 18px;
+        font-size: 14px;
         width: 100%;
         padding: 5px 5px 5px 10px;
         height: 38px;
         outline: none;
+        background-color: white;
+        border: none;
+        &::placeholder{
+            color: dimgrey;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+.site-intro{
+    padding: 3% 9%;
+    margin: 90px 0px 0px;
+    height: 80%;
+    width: 100%;
+    background-color: $primary-color;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    .slogan{
+        color: white;
+        font-size:3.5rem;
+        line-height: 1.5;
+        font-weight: 900;
+    }
+    .features{
+        color: black;
+        font-size:1.5rem;
+        line-height: 2;
+        font-weight: 800;
     }
 }

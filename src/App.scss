@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Montserrat";
 }
 
 // so that there will be no __ under my anchors
@@ -16,9 +16,9 @@ a{
 
 body{
     color: azure;
-    background-color: $primary-color;
+    background-color: #F8F8F8;
 }
 
 .container{
-    margin: 0px 40px;
+    padding: 2% 3%;
 }

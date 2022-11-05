@@ -4,13 +4,13 @@
     margin:20px 0px;
     h2{
         color:$font-secondary;
-        margin-bottom: 10px;
-        font-weight: 400;
+        margin-bottom: 30px;
+        font-weight: 500;
     }
 }
 
-// .food-container{
-//     display: grid;
-//     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-//     grid-gap: 15px;
-// }
+.food-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 15px;
+}

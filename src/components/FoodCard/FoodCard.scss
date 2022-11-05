@@ -1,21 +1,25 @@
 @import "../../common/colors.scss";
 
 .card-item{
-    background: $secondary-color;
+    background: white;
     cursor: pointer;
     transition: all 0.3s;
-    min-height: 450px;
-    height: 100%;
+    min-height: 220px;
+    // height: 100%;
     margin: 10px;
-
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 3px 4px 12px 1px rgba(0,0,0,0.1);
+    transform: scale(0.95);
+    transition: box-shadow 0.5s, transform 0.5s;
     &:hover{
-        transform: scale(1.05);
-        transition: all 0.3s;
+      transform: scale(1);
+      box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
     }
 }
 
 .card-top{
-    height: 300px;
+    padding: 8% 8%;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +37,7 @@ img{
 .card-info{
     color: $font-primary;
     h4{
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 400;
         margin-bottom: 10px;
     }
