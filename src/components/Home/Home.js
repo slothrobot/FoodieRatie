@@ -1,22 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import FoodListing from '../FoodListing/FoodListing';
-import { useDispatch } from 'react-redux';
-import { fetchAsyncFoods } from '../../features/Foods/foodSlice';
-// import OpenFoodApi from '../../common/APIs/OpenFoodApi';
+import { useDispatch} from 'react-redux';
+import { fetchAsyncFoods, removeFoodList} from '../../features/Foods/foodSlice';
+import "./Home.scss";
+import IntroSection from '../IntroSection/IntroSection';
 
 const Home = () => {
     // uesDispatch is a react-redux hook to dispatch actions in the redux store in react components
     const dispatch = useDispatch();
-    
-    const foodText = "";
-    // const [page, setPage] = useState(1);
+
+    const [page, setPage] = useState(1);
     // use this hook to fetch data from API
     useEffect(()=>{
-        dispatch(fetchAsyncFoods(foodText));
+        dispatch(fetchAsyncFoods([keywords,page]));
+        //to clean-up
+        return ()=>{
+            dispatch(removeFoodList());
+        }
         // the [] is set here so that the above function will be rendered once, 
         //this is the useEffect()'s feature.
-    },[dispatch]);
+    },[dispatch, page]);
     // console.log(page);
+
+    const [keywords, setKeywords] = useState("");
+    const submitHandler = (e)=>{
+        //to prevent from refreshing the page when clicking on the search button, use preventDefault
+        e.preventDefault();
+        if(keywords==="") return alert("Please enter some keywords");
+        dispatch(fetchAsyncFoods([keywords, 1]));
+        dispatch(removeFoodList());
+        // setKeywords("");
+        setPage(1);
+    }
 
 //the old way to fetch data, without using redux-toolkit 
     // const keywords='snacks';
@@ -33,13 +48,27 @@ const Home = () => {
     // },[])
 
     return (
-        <div>
+        <div className="body">
+            <IntroSection />
+            <div>
+              <div className="search-bar" id="search">
+                <form onSubmit={submitHandler}>
+                    <input 
+                    type="text" 
+                    value={keywords} 
+                    placeholder="Search..." 
+                    onChange={(e)=>setKeywords(e.target.value)}
+                    />
+                    <button type="submit"><i className="fa fa-search"></i></button>
+                </form>
+             </div>
+            </div>
         <div className='banner-img'></div>
         <FoodListing />
-            {/* <div className='load-more'>
-                <button onClick={()=>{page>1? setPage(page-1):setPage(1)}}>Previous</button>
-                <button onClick={()=>{setPage(page+1)}}>Next</button>
-            </div> */}
+            <div className='load-more'>
+                <button className="btn btn-light" onClick={()=>{page>1? setPage(page-1):setPage(1)}}> « Prev </button>
+                <button className="btn btn-light" onClick={()=>{setPage(page+1)}}> Next » </button>
+            </div>
         </div>
     );
 };

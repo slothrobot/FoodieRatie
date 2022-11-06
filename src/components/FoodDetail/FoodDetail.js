@@ -8,8 +8,6 @@ const FoodDetail = () => {
     const {_id} = useParams();
     const dispatch = useDispatch();
     const data = useSelector(getAllDetails);
-    console.log(data);
-
 
     useEffect(()=>{
         dispatch(fetchAsyncDetails(_id))
@@ -29,41 +27,27 @@ const FoodDetail = () => {
             <>
             <div className="section-left">
               <div className="food-title">{data.product.product_name}</div>
-              <div className="food-rating">
-                {/* <span>
-                  IMDB Rating <i className="fa fa-star"></i> : {data.imdbRating}
-                </span>
-                <span>
-                  IMDB Votes <i className="fa fa-thumbs-up"></i> :{" "}
-                  {data.imdbVotes}
-                </span>
-                <span>
-                  Runtime <i className="fa fa-film"></i> : {data.Runtime}
-                </span>
-                <span>
-                  Year <i className="fa fa-calendar"></i> : {data.Year}
-                </span> */}
-              </div>
-              {/* <div className="food-ingredients"></div> */}
-              <div className="food-info">
-                <div>
+               <div className="food-rating">
+                <div className="food-info">
+                 <div>
                   <span>Brand</span>
                   <span>{data.product.brands}</span>
-                </div>
-                <div>
+                 </div>
+                 <div>
                   <span>Quantity</span>
                   <span>{data.product.quantity}</span>
-                </div>
-                <div>
+                 </div>
+                 <div>
                   <span>Barcode</span>
                   <span>{data.product._id}</span>
-                </div>
-                <div>
-                <span>Ingredients</span> 
-                <span>{data.product.ingredients_text}</span>
-                </div>
+                 </div>
+                 <div>
+                  <span>Ingredients</span> 
+                  <span>{data.product.ingredients_text}</span>
+                 </div>
+               </div>
               </div>
-            </div>
+             </div>
             <div className="section-right">
               <img src={data.product.image_url} alt={data.product.product_name} />
             </div>

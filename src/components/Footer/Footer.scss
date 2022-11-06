@@ -1,14 +1,16 @@
 @import "../../common/colors.scss";
 
 .footer{
-    height: 72px;
-    background: $secondary-color;
+    background: white;
     color: $font-primary;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 100px;
+    padding: 5% 15%;
+    i{
+        margin: 0 20px;
+    }
 }
 
 .footer a{

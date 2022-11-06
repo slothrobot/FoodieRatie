@@ -1,55 +1,36 @@
-import React,{ useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import { Link } from "react-router-dom";
-import { fetchAsyncFoods } from "../../features/Foods/foodSlice";
 import user from "../../images/user.png";
 import "./Header.scss";
 import logo from "../../images/logo.png";
 
 const Header = () => {
-    const [keywords, setKeywords] = useState("");
-    const dispatch = useDispatch();
-    const submitHandler = (e)=>{
-        //to prevent from refreshing the page when clicking on the search button, use preventDefault
-        e.preventDefault();
-        if(keywords==="") return alert("Please enter some keywords");
-        dispatch(fetchAsyncFoods(keywords));
-        setKeywords("");
-    }
     return (
         <div className="page-header">
-        <div className="header">
-            <div className="logo">
+        <nav className="navbar navbar-expand-lg">
+            <div className="navbar-brand">
             <Link to="/">
-            <img src={logo} alt="FoodieRatie"/>
+             <img src={logo} alt="FoodieRatie"/>
             </Link>
             </div>
-            <div className="search-bar">
-                <form onSubmit={submitHandler}>
-                    <input 
-                    type="text" 
-                    value={keywords} 
-                    placeholder="Search..." 
-                    onChange={(e)=>setKeywords(e.target.value)}
-                    />
-                    <button type="submit"><i className="fa fa-search"></i></button>
-                </form>
+            <button className="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerContent" aria-controls="navbarTogglerContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarTogglerContent">
+                <ul className="navbar-nav ms-auto">
+                    <li className="nav-item active">
+                        <a className="nav-link" href="/">Home</a>
+                    </li>
+                    <li className="nav-item active">
+                        <a className="nav-link" href="#footer">Contact</a>
+                    </li>
+                </ul>
+                <div className="user-image">
+                     <img src={user} alt="user" />
+                </div>
             </div>
-            <div className="user-image">
-                <img src={user} alt="user" />
-            </div>
-        </div>
-        <div className="row site-intro">
-            <div className="col-lg-6 slogan">
-                <span>Find, Rate and Comment on Your Fav Snack 😋</span>
-            </div>
-            {/* to upgrade this part to be cool carousel! */}
-            <div className="col-lg-6 features">
-                <p>🔍 Search among 2,650,000+ food products</p>
-                <p>✔️ Check the ingredients and allergens</p>
-                <p>📝 Add new product to your wishlist</p>
-            </div>
-        </div>
+        </nav>
+        
      </div>
     );
 };

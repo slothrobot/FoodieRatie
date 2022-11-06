@@ -4,9 +4,9 @@ import FoodApi from '../../common/APIs/OpenFoodApi';
 
 export const fetchAsyncFoods = createAsyncThunk('foods/fetchAsyncFoods', 
 async (keywords)=>{
-
+        const [keyword, page] = keywords;
         const response = await FoodApi
-        .get(`cgi/search.pl?json=true&action=process&sort_by=unique_scans_n&page_size=20&search_terms=${keywords}`)
+        .get(`cgi/search.pl?json=true&action=process&sort_by=unique_scans_n&page_size=20&search_terms=${keyword}&page=${page}`)
         .catch((err)=>{
             console.log('Err: ', err);
         });
@@ -35,6 +35,9 @@ const foodSlice = createSlice({
             //this clean-up is not an async action creator, so put it here
             removeDetails: (state)=>{
                 state.details ={};
+            },
+            removeFoodList: (state)=>{
+                state.foods = {};
             },
             //the following addFoods is no longer used since I am now using thunk and extrareducers now
             //add the action creator with the initial state and payload
@@ -65,6 +68,7 @@ const foodSlice = createSlice({
 //the slice is created, let's export the generated redux action creators
 export const {addFoods} = foodSlice.actions;
 export const {removeDetails} = foodSlice.actions;
+export const {removeFoodList} = foodSlice.actions;
 //also export the reducer function for the whole slice
 export default foodSlice.reducer;
 //fetch a value from the store

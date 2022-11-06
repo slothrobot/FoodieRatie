@@ -2,23 +2,46 @@
 
 
 
-.header{
+.navbar{
     height: 90px;
     background-color: $primary-color;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 2;
+    padding: 0 8%;
 }
 
-.logo{
+.navbar-brand{
     color: $font-primary;
     font-size: 40px;
     font-weight: 600;
     height: 90px;
+  }
+  
+.nav-item{
+    padding: 0 18px;
+}
+  
+.nav-link{
+    font-size: 22px;
+    font-weight: 600;
+    font-family: "Montserrat";
+    color: white;
+    &:hover{
+        color: black;
+    }
+}
+
+.navbar-toggler{
+    color: white;
+}
+
+.navbar-collapse{
+    background-color: $primary-color;
 }
 
 .user-image, .user-image img{
@@ -26,63 +49,3 @@
     width: 38px;
 }
 
-.search-bar{
-    width: 30%;
-    display:flex;
-    justify-content: center;
-    form{
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        border-radius: 50px;
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        &.focus {
-            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
-          }
-        button{
-            padding: 0px 8px;
-            font-size: 20px;
-            cursor: pointer;
-            height: 38px;
-            border: none!important;
-            outline: none;
-        }
-    }
-    input{
-        font-size: 14px;
-        width: 100%;
-        padding: 5px 5px 5px 10px;
-        height: 38px;
-        outline: none;
-        background-color: white;
-        border: none;
-        &::placeholder{
-            color: dimgrey;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-    }
-}
-
-.site-intro{
-    padding: 3% 9%;
-    margin: 90px 0px 0px;
-    height: 80%;
-    width: 100%;
-    background-color: $primary-color;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    .slogan{
-        color: white;
-        font-size:3.5rem;
-        line-height: 1.5;
-        font-weight: 900;
-    }
-    .features{
-        color: black;
-        font-size:1.5rem;
-        line-height: 2;
-        font-weight: 800;
-    }
-}

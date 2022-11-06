@@ -3,7 +3,7 @@
 .food-list, .show-list{
     margin:20px 0px;
     h2{
-        color:$font-secondary;
+        color:$font-primary;
         margin-bottom: 30px;
         font-weight: 500;
     }
@@ -13,4 +13,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 15px;
+}
+
+.food-wrapper{
+    padding: 2% 9%;
 }

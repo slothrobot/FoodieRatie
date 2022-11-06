@@ -13,13 +13,11 @@ function App() {
     <div className="App">
       <Router>
         <Header></Header>
-        <div className='container'>
         <Routes>
         <Route path='/' exact element={<Home />} />
         <Route path='/product/:_id' element={<FoodDetail />} />
         <Route path="*" element={<PageNotFound />} />
         </Routes>
-        </div>
         <Footer></Footer>
       </Router>
     </div>
