@@ -3,23 +3,39 @@
 
 
 .navbar{
-    height: 90px;
+    // height: 90px;
     background-color: $primary-color;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 2;
     padding: 0 8%;
+    box-sizing: border-box;
 }
+
+.btn{
+    font-size: 22px;
+    font-weight:600;
+    margin: 0 10px;
+    color: white;
+    background-color: $primary-color;
+    border: 0ch;
+    &:hover{
+        color: black;
+        background-color: $primary-color;
+        border: 0ch;
+    }
+    }
 
 .navbar-brand{
     color: $font-primary;
     font-size: 40px;
     font-weight: 600;
-    height: 90px;
+    height: 80px;
+    width: 60%;
   }
   
 .nav-item{
@@ -38,7 +54,11 @@
 
 .navbar-toggler{
     color: white;
+    .fa-bars{
+        font-size: 26px;
+    }
 }
+
 
 .navbar-collapse{
     background-color: $primary-color;

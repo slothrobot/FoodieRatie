@@ -1,9 +1,10 @@
 import React from 'react';
+import notFound from '../../images/notFound.png';
 
 const PageNotFound = () => {
     return (
         <div>
-            PageNotFound
+            <img src={notFound} alt='PageNotFound' />
         </div>
     );
 };

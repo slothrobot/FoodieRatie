@@ -14,7 +14,7 @@ const Header = () => {
             </Link>
             </div>
             <button className="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerContent" aria-controls="navbarTogglerContent" aria-expanded="false" aria-label="Toggle navigation">
-             <span className="navbar-toggler-icon"></span>
+             <span><i className="fa-solid fa-bars"></i></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarTogglerContent">
                 <ul className="navbar-nav ms-auto">
@@ -25,9 +25,15 @@ const Header = () => {
                         <a className="nav-link" href="#footer">Contact</a>
                     </li>
                 </ul>
-                <div className="user-image">
+                <Link to='/login'>
+                <button className="btn">Login</button>
+                </Link>
+                <Link to='/register'>
+                <button className="btn">Signup</button>
+                </Link>
+                {/* <div className="user-image">
                      <img src={user} alt="user" />
-                </div>
+                </div> */}
             </div>
         </nav>
         

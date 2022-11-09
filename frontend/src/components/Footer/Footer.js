@@ -9,7 +9,7 @@ const Footer = () => {
             <a href='https://github.com/slothrobot'><i className='fa-brands fa-github'></i></a>
             <a href='mailto:xiongshj.fj@gmail.com'><i className='fa-solid fa-envelope'></i></a>
           </div>
-        <div>© Copyright FoodieRatie 2021 - {new Date().getFullYear()}</div>
+        <div>© FoodieRatie 2021 - {new Date().getFullYear()}</div>
         <div>Made with ❤ by Sugi Studio</div>
         </div>
     );

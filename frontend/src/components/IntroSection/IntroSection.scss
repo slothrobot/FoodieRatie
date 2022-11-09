@@ -2,24 +2,27 @@
 
 
 .site-intro{
-    padding: 3% 9%;
-    margin: 90px 0px 20px;
+    padding: 2% 8% 0%;
+    margin: 70px 0px 20px;
     // height: 80%;
     width: 100%;
     background-color: $primary-color;
     position: relative;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    box-sizing: border-box;
     .slogan{
         color: white;
         font-size:3.5rem;
         line-height: 1.5;
         font-weight: 900;
+        padding: 2%;
     }
     .features{
         color: black;
         font-size:1.5rem;
         line-height: 2;
         font-weight: 800;
+        padding: 5% 2%;
     }
 }
