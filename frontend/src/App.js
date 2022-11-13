@@ -9,7 +9,8 @@ import Footer from './components/Footer/Footer';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Favorite from './components/Favorite/Favorite';
-
+import Profile from './components/Profile/Profile';
+import ProtectedRoute from './routing/ProtectedRoute';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/favorite' element={<Favorite />} />
         <Route path="*" element={<PageNotFound />} />
+        <Route element={<ProtectedRoute />}>
+            <Route path='/user-profile' element={<Profile />} />
+          </Route>
         </Routes>
         <Footer></Footer>
       </Router>

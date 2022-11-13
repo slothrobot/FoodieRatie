@@ -27,10 +27,19 @@ app.get('/api/user/auth', auth, (req,res)=>{
 
 app.post('/api/user/register', (req,res)=>{
     const user = new User(req.body);
-    user.save((err,userData)=>{
-        if(err) return res.json({success: false, err});
-        return res.status(200).json({
-            success:true
+    //check if the email is in the database
+    User.findOne({email: req.body.email}, (err, newUser)=>{
+        if(newUser){
+          return res.status(400).json({
+            success: false,
+            message: "Email already registered, please login or use another email."
+        });
+        } 
+        user.save((err,userData)=>{
+            if(err) return res.status(400).json({success: false, message:'Please enter valid information.'});
+             return res.status(200).json({
+                success:true
+            });
         });
     });
 });
@@ -39,38 +48,54 @@ app.post('/api/user/login',(req,res)=>{
     //find the email in my database
     User.findOne({email: req.body.email}, (err, user)=>{
         if(!user){
-          return res.json({
+          return res.status(400).json({
             loginSuccess: false,
-            message: "Auth failed, email not found"
+            message: "Login failed, email not found."
         });
-        }
+    } 
     //check if the password is right
-    user.comparePassword(req.body.password, (err, isMatch)=>{
-        if(!isMatch){
-            return res.json({loginSuccess:false, message:"wrong password"})
-        }
-    });
+        user.comparePassword(req.body.password, (err, isMatch)=>{
+            if(!isMatch){
+                return res.status(400).json({loginSuccess:false, message:"Please enter the right password."});
+            }   
     //generate token
-    user.generateToken((err,user)=>{
-        if(err) return res.status(400).send(err);
-        res.cookie('x_auth', user.token)
-            .status(200)
-            .json({
-                loginSuccess: true
+        user.generateToken((err,user)=>{
+            if(err) return res.status(400).send(err);
+            res.cookie('x_auth', user.userToken)
+                .status(200)
+                .json({
+                loginSuccess: true,
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                userToken: user.userToken
             });
+        });
     });
   });
 });
 
 app.get('/api/user/logout', auth, (req, res)=>{
     //find the user logged in and remove user's token
-    User.findOneAndUpdate({_id: req.user._id}, {token:''}, (err, doc)=>{
-        if(err) return res.json({success: false, err});
+    User.findOneAndUpdate({_id: req.user._id}, {userToken:''}, (err, doc)=>{
+        if(err) return res.status(400).json({success: false, err});
         return res.status(200).send({
             success: true
         });
     });
-})
+});
+
+app.get('/api/user/profile', auth, (req, res)=>{
+    User.findById(req.user._id, (err, user)=>{
+        if(err) return res.status(400).json({success:false, err});
+        return res.json({
+                id: req.user._id,
+                username: req.user.username,
+                email: req.user.email,
+            });
+    });
+});
+
 
 const port = process.env.PORT || 5000 
 

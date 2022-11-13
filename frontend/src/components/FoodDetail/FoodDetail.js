@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAsyncDetails, getAllDetails, removeDetails} from '../../features/Foods/foodSlice';
 import "./FoodDetail.scss";
+import List from './Sections/List';
 
 const FoodDetail = () => {
     const {_id} = useParams();
@@ -45,6 +46,7 @@ const FoodDetail = () => {
                   <span>Ingredients</span> 
                   <span>{data.product.ingredients_text}</span>
                  </div>
+                 <List />
                </div>
               </div>
              </div>

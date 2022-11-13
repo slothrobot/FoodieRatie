@@ -62,6 +62,12 @@
 
 .navbar-collapse{
     background-color: $primary-color;
+    span{
+        font-size: 18px;
+        font-weight: 400;
+        font-family: "Montserrat";
+        color: black;
+    }
 }
 
 .user-image, .user-image img{

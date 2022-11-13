@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
         type:Number,
         default: 0
     },
-    token:{
+    userToken:{
         type:String,
     },
     tokenExp:{
@@ -61,7 +61,7 @@ userSchema.methods.generateToken = function(cb){
     var user = this;
     var token = jwt.sign(user._id.toHexString(), 'secret');
 
-    user.token = token;
+    user.userToken = token;
     user.save(function(err,user){
         if(err) return cb(err)
         cb(null, user);
@@ -72,7 +72,7 @@ userSchema.statics.findByToken = function(token, cb){
     var user = this;
 
     jwt.verify(token, 'secret', function(err, decode){
-        user.findOne({'_id':decode, 'token':token}, function(err, user){
+        user.findOne({'_id':decode, 'userToken':token}, function(err, user){
             if(err) return cb(err);
             cb(null, user);
         });

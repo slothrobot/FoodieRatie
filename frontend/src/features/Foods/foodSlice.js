@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import FoodApi from '../../common/APIs/OpenFoodApi';
-// import {USER_ID,PASSWORD } from '../../common/APIs/ApiKeyToWrite';
 
 export const fetchAsyncFoods = createAsyncThunk('foods/fetchAsyncFoods', 
 async (keywords)=>{

@@ -11,7 +11,7 @@ let auth = (req, res, next)=>{
             error: true
         });
 
-        req.token = token;
+        req.userToken = token;
         req.user = user;
         next();
     });

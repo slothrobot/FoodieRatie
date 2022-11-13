@@ -1,6 +1,11 @@
 @import "../../common/colors.scss";
 
 .register{
-    padding: 10%;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    padding: 3% 10%;
     color: $font-primary;
+    button{
+        margin: 20px 50px 20px 0px;
+    }
 }
