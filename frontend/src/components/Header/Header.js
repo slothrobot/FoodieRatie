@@ -37,31 +37,37 @@ const Header = () => {
                     <li className="nav-item active">
                         <a className="nav-link" href="#footer">Contact</a>
                     </li>
-                </ul>
-                <Link to='/user-profile'>
-                <span>
-                   {userInfo.id ? `Hi, ${userInfo.username}` : null}
-                 </span>
-                 </Link>
-                 {userInfo.id ? (
-                    <Link to='/'>
-                    <button className='btn'  onClick={() => dispatch(logout())}>
-                      Logout
-                    </button>
-                    </Link>
-                ) : (
-                <>
-                 <Link to='/login'>
-                     <button className='btn'>Login</button>
-                </Link>
-                <Link to='/register'>
-                     <button className='btn'>Signup</button>
-                </Link>
-                </>
-                )}
+                    {userInfo.id ? ( 
+                     <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Hi, {userInfo.username}
+                        </a>
+                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                           <a className="dropdown-item" href="/user-profile">Profile</a>
+                           <a className="dropdown-item" href="/list">MyList</a>
+                         </div>
+                        </li>
+                        ): null}
+                        {userInfo.id ? (
+                        <Link to='/'>
+                        <button className='btn'  onClick={() => dispatch(logout())}>
+                         Logout
+                         </button>
+                        </Link>
+                        ) : (
+                        <>
+                        <li className="nav-item active">
+                        <a className="nav-link" href="/login">Login</a>
+                        </li>
+                        <li className="nav-item active">
+                        <a className="nav-link" href="/register">Signup</a>
+                        </li>
+                        </>
+                        )}
                 {/* <div className="user-image">
                      <img src={user} alt="user" />
                 </div> */}
+                </ul>
             </div>
         </nav>
         

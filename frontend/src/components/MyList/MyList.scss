@@ -1,0 +1,32 @@
+@import "../../common/colors.scss";
+
+.fav{
+    padding: 5% 10%;
+    color: $font-primary;
+    margin: 3rem auto;
+    overflow-x: auto;
+    width: 85%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 2%;
+}
+
+th{
+    height: 70px;
+}
+  
+td, th {
+    text-align: center;
+    padding: 8px;
+    vertical-align: middle;
+    border-top:1px solid #dddddd ;
+    border-bottom:1px solid #dddddd ;
+    :hover {background-color: $primary-color;}
+}
+  
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

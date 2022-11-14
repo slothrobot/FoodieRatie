@@ -46,7 +46,13 @@ const FoodDetail = () => {
                   <span>Ingredients</span> 
                   <span>{data.product.ingredients_text}</span>
                  </div>
-                 <List />
+                 <List 
+                   foodId={data.product._id} 
+                   foodName={data.product.product_name}
+                   foodBrand={data.product.brands}
+                   foodImage={data.product.image_url || data.product.product_name}
+                   foodQuantity={data.product.quantity}
+                   />
                </div>
               </div>
              </div>
