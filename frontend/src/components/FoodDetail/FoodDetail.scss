@@ -1,16 +1,22 @@
 @import "../../common/colors.scss";
+ 
 
 .food-section {
     display: flex;
-    justify-content: space-evenly;
-    padding: 150px 8%;
+    justify-content: space-between;
+    padding: 10% 10% 3%;
     color: $font-primary;
     font-weight: 400;
+    h1{
+      font-size: 40px;
+      color: $font-primary;
+    }
   }
   
+
   .food-rating {
     padding-left: 3px;
-    margin-top: 20px;
+    margin-top: 50px;
     color: $font-secondary;
     display: flex;
     span {
@@ -18,14 +24,25 @@
     }
   }
   
-  .section-left{
-    width: 60%;
+  .section-left {
+    margin-right: 30px;
   }
+
+  .food-card{
+    cursor: pointer;
+    min-height: 300px;
+    margin: 10px;
+}
+
+.top-pic{
+  height: 300px;
+  display: flex;
+}
+
+.section-middle{
+    width: 40%;
+}
   
-  .food-title {
-    font-size: 40px;
-    color: $font-primary;
-  }
   .food-plot {
     margin-top: 20px;
     line-height: 1.8rem;
@@ -43,21 +60,27 @@
     color: $font-secondary;
   }
   
-  .fa-star {
-    color: #ff9e00;
-  }
-  .fa-thumbs-up {
-    color: #fafafa;
-  }
   
-  .fa-film {
-    color: rgb(191, 213, 214);
+.section-right{
+    margin-top: 60px;
+    .btn{
+      font-size: 18px;
+    }
+}
+
+.section-bottom{
+  padding: 0 10%;
+  color: $font-primary;
+  margin: 10px;
+  .btn{
+    font-size: 18px;
   }
-  
-  .fa-calendar {
-    color: peachpuff;
-  }
-  
-  .section-right {
-    margin-left: 30px;
-  }
+}
+
+.rate-food{
+    margin-bottom: 20px;
+}
+
+.other-rates{
+    
+}

@@ -56,7 +56,7 @@ const List = (props) => {
             if(response.data.success){
                 setListNumber(response.data.listNumber)
             }else{
-                alert('Failed to get the data.')
+                console.log('Failed to get the data.')
             }
         });
 
@@ -65,7 +65,7 @@ const List = (props) => {
             if(response.data.success){
                 setOnList(response.data.onList)
             }else{
-                alert('Failed to get List information.')
+                console.log('Failed to get List information.')
             }
         });
 

@@ -2,10 +2,11 @@ const express = require('express');
 const mongoose  = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const {User} = require('./model/user');
+const {User} = require('./models/user');
 const config = require('./config/keys');
 const {auth} = require('./middleware/auth');
-const {List} = require('./model/list');
+const {List} = require('./models/list');
+const {Rate} = require('./models/rate');
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
@@ -98,7 +99,7 @@ app.get('/api/user/profile', auth, (req, res)=>{
 });
 
 app.post('/api/list/listNumber', auth, (req, res)=>{
-    List.find({"foodId": req.body.foodId})
+    List.find({foodId: req.body.foodId})
         .exec((err, list) =>{
             if(err) return res.status(400).send(err)
             res.status(200).json({success: true, listNumber: list.length});
@@ -106,7 +107,7 @@ app.post('/api/list/listNumber', auth, (req, res)=>{
 });
 
 app.post('/api/list/onList', auth, (req, res)=>{
-    List.find({"foodId": req.body.foodId, "userFrom": req.body.userFrom})
+    List.find({foodId: req.body.foodId, userFrom: req.body.userFrom})
         .exec((err, list) =>{
             if(err) return res.status(400).send(err)
             //check if the user already added this product to list
@@ -127,7 +128,7 @@ app.post('/api/list/addToList', auth, (req, res) =>{
 });
 
 app.post('/api/list/removeFromList', auth, (req, res) =>{
-    List.findOneAndDelete({"foodId": req.body.foodId, "userFrom": req.body.userFrom})
+    List.findOneAndDelete({foodId: req.body.foodId, userFrom: req.body.userFrom})
         .exec((err, doc) =>{
             if(err) return res.status(400).json({success: false, err})
             res.status(200).json({success: true, doc})
@@ -135,12 +136,49 @@ app.post('/api/list/removeFromList', auth, (req, res) =>{
 });
 
 app.post('/api/list/getList', auth, (req, res) =>{
-    List.find({"userFrom": req.body.userFrom})
+    List.find({userFrom: req.body.userFrom})
         .exec((err, listItems) =>{
             if(err) return res.status(400).send(err)
             return res.status(200).json({success:true, listItems})
         })
 })
+
+app.post('/api/rate/hasReviewed', auth, (req, res)=>{
+    Rate.find({foodId: req.body.foodId, userFrom: req.body.userFrom})
+        .exec((err, rate) =>{
+            if(err) return res.status(400).send(err)
+            //check if the user already rated this product
+            let result = false;
+            if(rate.length !==0){
+                result = true
+            }
+            res.status(200).json({success: true, hasReviewed: result});
+        });
+});
+
+app.post('/api/rate/addNewRate', auth, (req, res) =>{
+    const rate = new Rate(req.body);
+    rate.save((err, doc) =>{
+        if(err) return res.status(400).json({success: false, err})
+        return res.status(200).json({success: true, doc})
+    });
+});
+
+app.post('/api/rate/getRate', auth, (req, res) =>{
+    Rate.findOne({foodId: req.body.foodId, userFrom: req.body.userFrom})
+        .exec((err, rate) =>{
+            if(err) return res.status(400).send(err)
+            return res.status(200).json({success:true, rate})
+        });
+});
+
+app.post('/api/rate/deleteRate', auth, (req, res) =>{
+    Rate.findOneAndDelete({foodId: req.body.foodId, userFrom: req.body.userFrom})
+        .exec((err, doc) =>{
+            if(err) return res.status(400).json({success: false, err})
+            res.status(200).json({success: true, doc})
+        });
+});
 
 const port = process.env.PORT || 5000 
 

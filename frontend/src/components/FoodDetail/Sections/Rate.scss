@@ -1,0 +1,52 @@
+@import '../../../common/colors.scss';
+
+.rate-form{
+    text-align: center;
+}
+
+.form-group{
+    text-align: center;
+}
+
+.star-rating{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.star-rating input{
+    position : absolute;
+    left     : -100vw;
+  }
+  
+.star-rating label{
+    width      : 48px;
+    height     : 48px;
+    padding    : 48px 0 0;
+    overflow   : hidden;
+    background : url('../../../images/stars.svg') no-repeat top left;
+  }
+
+.star-rating:not(:hover) input:indeterminate + label,
+.star-rating:not(:hover) input:checked ~ input + label,
+.star-rating input:hover ~ input + label{
+  background-position : -48px 0;
+}
+
+.star-rating:not(:hover) input:focus-visible + label{
+  background-position : -96px 0;
+}
+
+.review-section{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px 20px;
+}
+
+.review{
+    width: 60%;
+}
+
+.show-review{
+  color: $font-primary;
+}
