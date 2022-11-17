@@ -18,6 +18,9 @@ const rateSchema = new mongoose.Schema({
     rateTime: {
         type: String
     },
+    userName:{
+        type:String
+    },
 });
 
 const Rate = mongoose.model('Rate', rateSchema);

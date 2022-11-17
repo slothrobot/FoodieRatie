@@ -17,6 +17,7 @@ const Rate = (props) => {
     const variable = {
         userFrom: userInfo.id,
         foodId: props.foodId,
+        userName: userInfo.username,
     }
 
     const getRate = () =>{
@@ -86,7 +87,7 @@ const Rate = (props) => {
     return (
 
         <div className='give-rate'>
-            <h3>Rate this product</h3>
+            <h3>Your Review</h3>
             {hasReviewed? (
                 <div className='show-review'>
                  <p>{rate}</p>
@@ -146,6 +147,7 @@ const Rate = (props) => {
                     /><label htmlFor="rating-5">5</label>
                 </span>
                 </div>
+                <small id="rateHelp" className="form-text text-muted">Rate from 0 to 5, no stars means 0</small>
                 <div className="form-group review-section">
                     <textarea 
                         type="text" 

@@ -180,6 +180,15 @@ app.post('/api/rate/deleteRate', auth, (req, res) =>{
         });
 });
 
+app.post('/api/rate/allRates', (req, res) =>{
+    Rate.find({foodId: req.body.foodId})
+        .exec((err, allRates) =>{
+            if(err) return res.status(400).send(err)
+            return res.status(200).json({success:true, allRates})
+        });
+});
+
+
 const port = process.env.PORT || 5000 
 
 app.listen(port, console.log(`server running on port ${port}`));

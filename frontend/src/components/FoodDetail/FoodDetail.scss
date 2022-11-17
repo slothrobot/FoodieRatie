@@ -1,12 +1,20 @@
 @import "../../common/colors.scss";
- 
+
+.detail-page{
+  padding: 0% 12%;
+}
+
+.food-title{
+  margin-top: 6rem;
+  color: $font-primary;
+}
 
 .food-section {
     display: flex;
     justify-content: space-between;
-    padding: 10% 10% 3%;
     color: $font-primary;
     font-weight: 400;
+    margin-top: 20px;
     h1{
       font-size: 40px;
       color: $font-primary;
@@ -16,7 +24,6 @@
 
   .food-rating {
     padding-left: 3px;
-    margin-top: 50px;
     color: $font-secondary;
     display: flex;
     span {
@@ -30,23 +37,24 @@
 
   .food-card{
     cursor: pointer;
-    min-height: 300px;
     margin: 10px;
+    max-height: 400px;
+    width: 300px;
 }
 
 .top-pic{
-  height: 300px;
+  background-color: white;
+  height: auto;
+  width: auto;
+  padding: 8%;
   display: flex;
+  justify-content: center;
 }
 
 .section-middle{
     width: 40%;
+    line-height: 1.5rem;
 }
-  
-  .food-plot {
-    margin-top: 20px;
-    line-height: 1.8rem;
-  }
   
   .food-info > div span:first-child {
     padding: 10px 0px;
@@ -62,23 +70,22 @@
   
   
 .section-right{
-    margin-top: 60px;
     .btn{
       font-size: 18px;
     }
 }
 
 .section-bottom{
-  padding: 0 10%;
+  padding: 2% 0%;
   color: $font-primary;
-  margin: 10px;
+  margin: 30px 10px;
   .btn{
     font-size: 18px;
   }
 }
 
 .rate-food{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .other-rates{

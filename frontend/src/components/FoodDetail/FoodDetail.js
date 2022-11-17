@@ -6,6 +6,7 @@ import "./FoodDetail.scss";
 import List from './Sections/List';
 import Rate from './Sections/Rate';
 import AllRates from './Sections/AllRates';
+import AverageScore from './Sections/AverageScore';
 
 const FoodDetail = () => {
     const {_id} = useParams();
@@ -23,14 +24,17 @@ const FoodDetail = () => {
  
     return (
       <div className='detail-page'>
-        <div className="food-section">
         {/* this is to check if the data has been loaded, if no ready, show details on the way */}
             {Object.keys(data).length===0 ?
             (<h2>...Details on the way</h2>)
             :(
             <>
-            <div className="section-left food-card">
+            <div>
+            <div className='food-title'>
             <h1>{data.product.product_name}</h1>
+            </div>
+            <div className="food-section">
+            <div className="section-left food-card">
             <div className='top-pic'>
               <img src={data.product.image_url} alt={data.product.product_name} />
               </div>
@@ -58,15 +62,9 @@ const FoodDetail = () => {
               </div>
              </div>
             <div className='section-right'>
-              <div className='score'>
-                <span>FoodieRatie Score: </span>
-              </div>
-              <div className='star-score'>
-                ⭐⭐⭐⭐⭐ 10.0
-              </div>
-              <div className='rate-number'>
-                <span>Rated by xxx foodies</span>
-              </div>
+              <AverageScore 
+                foodId={data.product._id} 
+              />
               <div className='bottom-buttons'>
               <List 
                    foodId={data.product._id} 
@@ -77,23 +75,29 @@ const FoodDetail = () => {
                    />
               </div>
             </div>
+          </div>
+          
         <div className='section-bottom'>
+        <hr />
           <div className='rate-food'>
             <Rate 
              foodId={data.product._id} 
            />
           </div>
+          <hr />
           <div className='other-rates'>
-            <AllRates />
+          
+            <AllRates 
+              foodId={data.product._id} 
+            />
           </div>
         </div>
+    </div>
         </>
         )
         }
-        
-      </div>
+          
     </div>
-      
     );
 };
 
