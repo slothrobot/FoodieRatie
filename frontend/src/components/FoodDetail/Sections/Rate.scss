@@ -4,9 +4,6 @@
     text-align: center;
 }
 
-.form-group{
-    text-align: center;
-}
 
 .star-rating{
     display: flex;
@@ -33,6 +30,7 @@
   background-position : -48px 0;
 }
 
+
 .star-rating:not(:hover) input:focus-visible + label{
   background-position : -96px 0;
 }
@@ -49,4 +47,11 @@
 
 .show-review{
   color: $font-primary;
+  button{
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  p{
+    margin-bottom: 0px;
+  }
 }

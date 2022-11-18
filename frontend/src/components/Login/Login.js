@@ -32,7 +32,6 @@ const Login = () => {
             <div className="card">
             <div className="card-body">
                 <form action="/login" onSubmit={handleSubmit(submitHandler)}>
-                    {error && <Error>{error}</Error>}
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
                         <input 

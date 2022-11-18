@@ -2,6 +2,7 @@ import axios from 'axios';
 // import { response } from 'express';
 import React, {useState, useEffect } from 'react';
 import './AllRates.scss';
+import Stars from './Stars';
 
 const AllRates = (props) => {
     const [reviews, setReviews] = useState([]);
@@ -24,7 +25,9 @@ const AllRates = (props) => {
             <div className='single-rate'>
                 <div className='user-info'>
                     <span>{rate.userName}</span>
-                    <p>{rate.userRate}   {rate.rateTime}</p>
+                    <p>
+                    <Stars value={rate.userRate}/>
+                     {rate.rateTime}</p>
                     <p>{rate.userReview}</p>
                 </div>
             </div>

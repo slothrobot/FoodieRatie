@@ -49,11 +49,13 @@ const Header = () => {
                         </li>
                         ): null}
                         {userInfo.id ? (
-                        <Link to='/'>
-                        <button className='btn'  onClick={() => dispatch(logout())}>
+                        <button className='btn'  
+                         onClick={() => {
+                            dispatch(logout());
+                            window.location.reload();
+                            }}>
                          Logout
                          </button>
-                        </Link>
                         ) : (
                         <>
                         <li className="nav-item active">

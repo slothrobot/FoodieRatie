@@ -3,7 +3,7 @@ import { mean, round } from 'lodash';
 // import { response } from 'express';
 import React, {useState, useEffect } from 'react';
 import './AverageScore.scss';
-
+import Stars from './Stars';
 
 
 const AverageScore = (props) => {
@@ -19,7 +19,7 @@ const AverageScore = (props) => {
                         return Number(rate.userRate);
                     });
                     setNumber(scores.length);
-                    const averageScore = round(((mean(scores) * 2) *100 / 100), 1); 
+                    const averageScore = round((mean(scores) *100 / 100), 1); 
                     setScore(averageScore);
                 }else{
                     console.log('Failed to get average score information.')
@@ -33,10 +33,11 @@ const AverageScore = (props) => {
                 <span>FoodieRatie Score: </span>
               </div>
               <div className='star-score'>
-                ⭐⭐⭐⭐⭐ {score ? score : 0}/10
+                <div><span className='score-large'>{score ? score : 0}</span>/5.0</div>
+                <Stars value={score}/>
               </div>
               <div className='rate-number'>
-                <span>Rated by {number} foodies</span>
+                <span>Rated by {number == 0 || number == 1 ? number+' foodie' : number+' foodies'}</span>
               </div>
         </div>
     );

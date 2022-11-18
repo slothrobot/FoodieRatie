@@ -30,16 +30,16 @@ const FoodDetail = () => {
             :(
             <>
             <div>
-            <div className='food-title'>
-            <h1>{data.product.product_name}</h1>
-            </div>
-            <div className="food-section">
-            <div className="section-left food-card">
-            <div className='top-pic'>
-              <img src={data.product.image_url} alt={data.product.product_name} />
+             <div className='food-title'>
+              <h1>{data.product.product_name}</h1>
+             </div>
+             <div className="food-section row">
+              <div className="section-left food-card col-lg-4 col-md-6">
+               <div className='top-pic'>
+                <img src={data.product.image_url} alt={data.product.product_name} />
+               </div>
               </div>
-            </div>
-            <div className="section-middle">
+             <div className="section-middle col-lg-4 col-md-6">
                <div className="food-rating">
                 <div className="food-info">
                  <div>
@@ -61,7 +61,7 @@ const FoodDetail = () => {
                </div>
               </div>
              </div>
-            <div className='section-right'>
+            <div className='section-right col-lg-4 col-md-6'>
               <AverageScore 
                 foodId={data.product._id} 
               />
@@ -74,8 +74,8 @@ const FoodDetail = () => {
                    foodQuantity={data.product.quantity}
                    />
               </div>
+             </div>
             </div>
-          </div>
           
         <div className='section-bottom'>
         <hr />

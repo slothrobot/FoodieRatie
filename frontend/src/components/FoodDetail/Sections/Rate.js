@@ -3,13 +3,14 @@ import './Rate.scss';
 import {useForm} from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-
+import Stars from './Stars';
 
 const Rate = (props) => {
 
     const {loading, userInfo} = useSelector((state) => state.user);
     const [rate, setRate] = useState(0);
     const [review, setReview] = useState('');
+    const [time, setTime] = useState('');
     const [hasReviewed, setHasReviewed] = useState(false);
 
     const {register, handleSubmit} = useForm();
@@ -26,6 +27,7 @@ const Rate = (props) => {
                 if(response.data.success){
                         setRate(response.data.rate.userRate)
                         setReview(response.data.rate.userReview)
+                        setTime(response.data.rate.rateTime)
                         console.log(rate)
                         console.log(hasReviewed)
                 }else{
@@ -54,9 +56,8 @@ const Rate = (props) => {
         if(!userInfo.id) return alert('Please login first')
         variable.userRate = e.userRate;
         variable.userReview = e.userReview;
-        // const date = new Date();
-        // variable.rateTime = date.getDay()+ '/' + date.getMonth()+ '/' + date.getFullYear();
-        variable.rateTime = new Date();
+        const date = new Date();
+        variable.rateTime = date.toLocaleString();
 
         // if the user has not reviewed this product, click submit to submit reviews, show reviews in the area
             axios.post('/api/rate/addNewRate', variable)
@@ -90,9 +91,12 @@ const Rate = (props) => {
             <h3>Your Review</h3>
             {hasReviewed? (
                 <div className='show-review'>
-                 <p>{rate}</p>
+                 <span>
+                 <Stars value={rate} />
+                 {time}
+                 </span>
                  <p>{review}</p>
-             <button  onClick={()=>handleDelete()}>Delete</button>
+             <button className='btn btn-dark' onClick={()=>handleDelete()}>Delete</button>
               </div>
             ) : (
             <>
@@ -100,7 +104,7 @@ const Rate = (props) => {
               <div className="rate-form">
                 <form onSubmit={handleSubmit(submitHandler)}>
                 <div className="form-group star-rating">
-                <span className="stars">
+                <span className="select-stars">
                     <input 
                         type="radio"
                         name="rating"
@@ -155,6 +159,7 @@ const Rate = (props) => {
                         name="userReview" 
                         id="userReview"
                         cols="60" rows="5"
+                        maxLength='2000'
                         {...register('userReview')}
                         placeholder='How do you like this product?'
                         required
