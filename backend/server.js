@@ -17,6 +17,16 @@ mongoose.connect(config.mongoURI,
 ).then(()=>console.log('DB connected'))
 .catch(err=>console.log(err));
 
+// Serve static assets if in production
+if(process.env.NODE_ENV === 'production'){
+    //set static folder
+    app.use(express.static('frontend/build'));
+    // index.html for all page routes
+    app.get('*', (req, res) =>{
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    });
+}
+
 app.get('/api/user/auth', auth, (req,res)=>{
     res.status(200).json({
         _id: req._id,
