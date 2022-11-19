@@ -7,6 +7,7 @@ const config = require('./config/keys');
 const {auth} = require('./middleware/auth');
 const {List} = require('./models/list');
 const {Rate} = require('./models/rate');
+const path = require('path');
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
@@ -20,10 +21,12 @@ mongoose.connect(config.mongoURI,
 // Serve static assets if in production
 if(process.env.NODE_ENV === 'production'){
     //set static folder
-    app.use(express.static('frontend/build'));
+    app.use(express.static(path.join(__dirname, '../frontend', 'build')));
+    app.use(express.static('public'));
+
     // index.html for all page routes
     app.get('*', (req, res) =>{
-        res.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'));
+        res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
     });
 }
 
