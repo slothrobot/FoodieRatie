@@ -19,14 +19,14 @@ const FoodDetail = () => {
         return ()=>{
             dispatch(removeDetails());
         }
-        //when the dispatch or imdbID changes, re-render the detail page
+        //when the dispatch or id changes, re-render the detail page
     },[dispatch, _id]);
  
     return (
       <div className='detail-page'>
         {/* this is to check if the data has been loaded, if no ready, show details on the way */}
             {Object.keys(data).length===0 ?
-            (<h2>...Details on the way</h2>)
+            (<div className='detail-help'><h2>...Details on the way</h2></div>)
             :(
             <>
             <div>

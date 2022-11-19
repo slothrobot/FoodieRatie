@@ -56,11 +56,11 @@ const Login = () => {
                         />
                     </div>
                     {error && <Error>{error}</Error>}
-                    <button type="submit" className="btn btn-dark"
+                    <button type="submit" className="btn btn-dark login-btn"
                             disabled={loading}
                     >Login</button>
                     <Link to='/register'>
-                    <button  className="btn btn-dark">Signup</button>
+                    <button  className="btn btn-dark register-btn">Signup</button>
                     </Link>
                 </form>
             </div>

@@ -85,11 +85,11 @@ const Register = () => {
                         />
                     </div>
                     {error && <Error>{error}</Error>}
-                    <button type="submit" className="btn btn-dark"
+                    <button type="submit" className="btn btn-dark register-btn"
                             disabled={loading}
                     >Register</button>
                     <Link to='/login'>
-                    <button  className="btn btn-dark">Login</button>
+                    <button  className="btn btn-dark login-btn">Login</button>
                     </Link>
                 </form>
             </div>
