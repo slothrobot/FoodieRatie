@@ -18,17 +18,6 @@ mongoose.connect(config.mongoURI,
 ).then(()=>console.log('DB connected'))
 .catch(err=>console.log(err));
 
-// Serve static assets if in production
-if(process.env.NODE_ENV === 'production'){
-    //set static folder
-    app.use(express.static(path.join(__dirname, '../frontend', 'build')));
-    app.use(express.static('public'));
-
-    // index.html for all page routes
-    app.get('*', (req, res) =>{
-        res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-    });
-}
 
 app.get('/api/user/auth', auth, (req,res)=>{
     res.status(200).json({
@@ -200,6 +189,18 @@ app.post('/api/rate/allRates', (req, res) =>{
             return res.status(200).json({success:true, allRates})
         });
 });
+
+
+// Serve static assets if in production
+if(process.env.NODE_ENV === 'production'){
+    //set static folder
+    app.use(express.static('frontend/build'));
+
+    // index.html for all page routes
+    app.get('*', (req, res) =>{
+        res.sendFile(path.resolve(__dirname, '../frontend','build','index.html'));
+    });
+}
 
 
 const port = process.env.PORT || 5000 
